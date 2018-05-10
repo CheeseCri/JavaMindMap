@@ -26,6 +26,8 @@ public class MainUI extends JFrame {
    private JPanel menuPanel;
    private JPanel textAreaPanel;
    private JPanel settingPanel;
+   private JButton textAreaButton;
+   private JButton settingAreaButton;
    
    public MainUI() {
       super("mindmap");
@@ -41,6 +43,8 @@ public class MainUI extends JFrame {
       toolBar = new JToolBar();
       textAreaPanel = new JPanel(new BorderLayout());
       settingPanel = new JPanel(new BorderLayout());
+      textAreaButton = new JButton("적용");
+      settingAreaButton = new JButton("적용");
       
 //      JMenu menu = new JMenu("HI");
 //      mainMenuBar.add(menu);
@@ -60,6 +64,8 @@ public class MainUI extends JFrame {
       
       textAreaPanel.add(textEditorScrollPane, BorderLayout.CENTER);
       settingPanel.add(settingScrollPane, BorderLayout.CENTER);
+      textAreaPanel.add(textAreaButton, BorderLayout.SOUTH);
+      settingPanel.add(settingAreaButton, BorderLayout.SOUTH);
       //textAreaPanel.add(new JButton("HIHIHI"), BorderLayout.SOUTH);
       
       
