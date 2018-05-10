@@ -84,6 +84,9 @@ public class MainUI extends JFrame {
       /* Add MenuPanel and SplitPane in MainFrame */
       menuPanel.add(mainMenuBar, BorderLayout.NORTH);
       menuPanel.add(toolBar, BorderLayout.SOUTH);
+
+      
+      MenuUI menuUI = new MenuUI(mainMenuBar);
       
       super.add(textAndSplitPane, BorderLayout.CENTER);
       super.add(menuPanel, BorderLayout.NORTH);
