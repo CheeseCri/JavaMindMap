@@ -11,25 +11,36 @@ public class TreeClass {
 	}
 
 	public Node searchNodeById(int id) {
+		
+		Node node = null;
+		
 		if(id == 0) return parent;
 		for(Node temp : parent.getChildren()) {
 			if(temp.getId() == id)
 				return temp;
 			else if(temp.getChildren().size() != 0)
-				return searchNodeById(temp, id);
+				node = searchNodeById(temp, id);
+			if(node != null)
+				return node;
 		}
-		return null;
+		return node;
 		
 	}
 	private Node searchNodeById(Node node, int id) {
+		
+		Node result = null;
+		
 		if(node.getId() == id)
 			return node;
 		if(node.getChildren().size() != 0 ) {
 			for(Node temp : node.getChildren()) {
-				return searchNodeById(temp, id);
+				if(temp.getId() == id) return temp;
+				result = searchNodeById(temp, id);
+				if(result != null)
+					return result;
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public void print(int depth) {

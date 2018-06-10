@@ -37,6 +37,8 @@ public class NodeMaker {
 			if(idList.size() == getTapCount(line)) { // 그 단꼐가 이전에 없었을 때
 				int parentId = idList.get(idList.size() - 1);
 				Node parentNode = treeClass.searchNodeById(parentId);
+				if(parentNode == null) 
+					System.out.println("WRONG");
 				parentNode.add(line.trim(), id);
 				
 				idList.add(id);
@@ -45,6 +47,9 @@ public class NodeMaker {
 			} else { // 이미 있었던 거일때
 				int parentId = idList.get(getTapCount(line) -1);
 				Node parentNode = treeClass.searchNodeById(parentId);
+				System.out.println("parentId = " + parentId);
+				if(parentNode == null) 
+					System.out.println("WRONG");
 				parentNode.add(line.trim(), id);
 				
 				idList.set(getTapCount(line),id);
