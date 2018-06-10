@@ -3,6 +3,8 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +16,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+
+import Listener.TextAreaButtonListener;
 
 public class MainUI extends JFrame {
    
@@ -137,6 +141,11 @@ public class MainUI extends JFrame {
       
       super.add(textAndSplitPane, BorderLayout.CENTER);
       super.add(menuPanel, BorderLayout.NORTH);
+      
+      /* addListenr button */
+      
+      textAreaButton.addActionListener(new TextAreaButtonListener(textEditorPane));
+
       
       /* MainFrame Visible and Setting */
       super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
