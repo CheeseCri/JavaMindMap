@@ -3,8 +3,6 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,12 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import Listener.TextAreaButtonListener;
+import NodeTree.TreeClass;
 
 public class MainUI extends JFrame {
    
    public static void main(String[] args) {
       MainUI start = new MainUI();
    }
+   private static TreeClass treeClass;
    
    private JMenuBar mainMenuBar;
    private JToolBar toolBar;
@@ -65,6 +65,7 @@ public class MainUI extends JFrame {
       settingPanel = new JPanel(new BorderLayout());
       textAreaButton = new JButton("적용");
       settingAreaButton = new JButton("적용");
+      mindMapPane.setLayout(null);
       
       /* Init Setting Panel's Member */
        settingItemNameLabel=   new JLabel("Text  :");
@@ -153,5 +154,17 @@ public class MainUI extends JFrame {
       super.setVisible(true);
       
    }
+
+
+	public static TreeClass getTreeClass() {
+		return treeClass;
+	}
+	
+	
+	public static void setTreeClass(TreeClass treeClass) {
+		MainUI.treeClass = treeClass;
+	}
+	   
+   
 
 }
