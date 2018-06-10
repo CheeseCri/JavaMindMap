@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 public class MainUI extends JFrame {
@@ -31,17 +32,17 @@ public class MainUI extends JFrame {
    private JButton textAreaButton;
    private JButton settingAreaButton;
    private JLabel settingItemNameLabel;
-   private JTextArea settingItemNameEdit;
+   private JTextField settingItemNameEdit;
    private JLabel settingItemXLabel;
-   private JTextArea settingItemXEdit;
+   private JTextField settingItemXEdit;
    private JLabel settingItemYLabel;
-   private JTextArea settingItemYEdit;
+   private JTextField settingItemYEdit;
    private JLabel settingItemWLabel;
-   private JTextArea settingItemWEdit;
+   private JTextField settingItemWEdit;
    private JLabel settingItemHLabel;
-   private JTextArea settingItemHEdit;
+   private JTextField settingItemHEdit;
    private JLabel settingItemColorLabel;
-   private JTextArea settingItemColorEdit;
+   private JTextField settingItemColorEdit;
    
    
    public MainUI() {
@@ -68,13 +69,13 @@ public class MainUI extends JFrame {
        settingItemHLabel =     new JLabel("H     :");
        settingItemWLabel =     new JLabel("W     :");
        settingItemColorLabel = new JLabel("Color :");
-       settingItemNameEdit = new JTextArea();
+       settingItemNameEdit = new JTextField();
        settingItemNameEdit.setEditable(false);
-       settingItemXEdit = new JTextArea();
-       settingItemYEdit = new JTextArea();
-       settingItemWEdit = new JTextArea();
-       settingItemHEdit = new JTextArea();
-       settingItemColorEdit = new JTextArea();
+       settingItemXEdit = new JTextField();
+       settingItemYEdit = new JTextField();
+       settingItemWEdit = new JTextField();
+       settingItemHEdit = new JTextField();
+       settingItemColorEdit = new JTextField();
 
  //      JMenu menu = new JMenu("HI");
 //      mainMenuBar.add(menu);
