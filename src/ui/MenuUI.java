@@ -9,18 +9,27 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import NodeTree.TreeClass;
 import controller.FileController;
+import controller.FileWrite;
+import controller.JsonController;
 
 public class MenuUI {
 	private JMenuBar menuBar;
 	private JTextArea textEditorPane;
 	private JPanel settingPane;
 	private FileController fileController;
+	private FileWrite fileWrite;
+	private JsonController jsonController;
 	
 	public MenuUI(JMenuBar menuBar) {
 		this.menuBar = menuBar;
 		
 		fileController = new FileController();
+		fileWrite = new FileWrite();
+		jsonController = new JsonController();
+		
+		
 		JMenu fileMenu = new JMenu("파일");
 		JMenuItem newFile = new JMenuItem("새로 만들기");
 		JMenuItem openFile = new JMenuItem("열기");
@@ -50,6 +59,15 @@ public class MenuUI {
 			public void actionPerformed(ActionEvent e) {
 				fileController.makeUIOpenFile();
 				
+			}
+		});
+		
+		saveFile.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//fileWrite.writeJson("./test", jsonController.setJson(MainUI.getTreeClass().getParent()));
+				System.out.println(jsonController.setJson(MainUI.getTreeClass().getParent()));
 			}
 		});
 		

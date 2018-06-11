@@ -2,8 +2,8 @@ package controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
+import ui.MenuUI;
 
 public class FileRead {
 	
@@ -20,6 +20,7 @@ public class FileRead {
 		}
 		
 		return json;
-		
 	}
+	
+	
 }
