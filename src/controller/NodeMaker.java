@@ -25,6 +25,7 @@ public class NodeMaker {
 			treeClass = new TreeClass(root);
 		} else {
 			System.out.println("NO TOKEN");
+			MainUI.setTreeClass(null);
 			return;
 		} // set Root in Tree
 		
@@ -34,26 +35,16 @@ public class NodeMaker {
 		while(stk.hasMoreTokens()) {
 			line = stk.nextToken();
 //			System.out.println(idList.size());
+			int parentId = idList.get(getTapCount(line) - 1);
+			Node parentNode = treeClass.searchNodeById(parentId);
+			if(parentNode == null) 
+				System.out.println("WRONG");
+			parentNode.add(line.trim(), id);
+	
 			if(idList.size() == getTapCount(line)) { // 그 단꼐가 이전에 없었을 때
-				int parentId = idList.get(idList.size() - 1);
-				Node parentNode = treeClass.searchNodeById(parentId);
-				if(parentNode == null) 
-					System.out.println("WRONG");
-				parentNode.add(line.trim(), id);
-				
 				idList.add(id);
-				
-//				System.out.println(idList.get(idList.size()-1));
 			} else { // 이미 있었던 거일때
-				int parentId = idList.get(getTapCount(line) -1);
-				Node parentNode = treeClass.searchNodeById(parentId);
-				System.out.println("parentId = " + parentId);
-				if(parentNode == null) 
-					System.out.println("WRONG");
-				parentNode.add(line.trim(), id);
-				
 				idList.set(getTapCount(line),id);
-				
 			}
 			id++;
 			
