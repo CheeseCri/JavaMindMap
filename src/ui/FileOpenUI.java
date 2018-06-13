@@ -9,6 +9,7 @@ public class FileOpenUI extends JFileChooser{
 
 		public FileOpenUI() {
 			super();
+			this.setCurrentDirectory(new File("."));
 			this.setApproveButtonText("열기");
 			this.setDialogTitle("열기");
 //			this.setFileFilter(new FileFilter() {

@@ -44,7 +44,7 @@ public class Node {
 
 		public String toString() {
 			return "id = " + this.id +
-					" string = " + this.name;
+					" string = " + this.name + " " + this.children;
 		}
 		
 		public String getName() {

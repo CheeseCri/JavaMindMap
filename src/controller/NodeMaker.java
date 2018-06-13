@@ -30,7 +30,7 @@ public class NodeMaker {
 		} // set Root in Tree
 		
 		ArrayList<Integer> idList = new ArrayList<Integer>();
-		idList.add(0,treeClass.getParent().getId());
+		idList.add(0,treeClass.getRoot().getId());
 	
 		while(stk.hasMoreTokens()) {
 			line = stk.nextToken();

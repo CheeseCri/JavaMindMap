@@ -13,6 +13,7 @@ import NodeTree.TreeClass;
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
+import controller.JsonToTextController;
 
 public class MenuUI {
 	private JMenuBar menuBar;
@@ -21,6 +22,7 @@ public class MenuUI {
 	private FileController fileController;
 	private FileWrite fileWrite;
 	private JsonController jsonController;
+	private JsonToTextController jsonToText;
 	
 	public MenuUI(JMenuBar menuBar) {
 		this.menuBar = menuBar;
@@ -28,6 +30,7 @@ public class MenuUI {
 		fileController = new FileController();
 		fileWrite = new FileWrite();
 		jsonController = new JsonController();
+		jsonToText = new JsonToTextController();
 		
 		
 		JMenu fileMenu = new JMenu("파일");
@@ -53,12 +56,13 @@ public class MenuUI {
 		this.menuBar.add(fileMenu);
 		this.menuBar.add(mindMapMenu);
 		
+		
 		openFile.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fileController.makeUIOpenFile();
-				
+				textEditorPane.setText(jsonToText.JsonToTextArea(MainUI.getTreeClass().getRoot(), 0));
 			}
 		});
 		
@@ -72,7 +76,6 @@ public class MenuUI {
 		});
 		
 		saveFileOtherName.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -80,5 +83,17 @@ public class MenuUI {
 			}
 		});
 		
+		
 	}
+
+	public JTextArea getTextEditorPane() {
+		return textEditorPane;
+	}
+
+	public void setTextEditorPane(JTextArea textEditorPane) {
+		this.textEditorPane = textEditorPane;
+	}
+	
+	
+	
 }

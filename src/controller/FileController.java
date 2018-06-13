@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 
+import NodeTree.TreeClass;
 import ui.FileNewSaveUI;
 import ui.FileOpenUI;
 import ui.FileSaveUI;
@@ -14,14 +15,18 @@ public class FileController {
 	private FileSaveUI fileSaveUI;
 	private FileNewSaveUI fileNewSaveUI;
 	private FileWrite fileWrite;
+	private FileRead fileRead;
 	private JsonController jsonController;
+	private String json;
 
 	public FileController() {
 		this.fileOpenUI = new FileOpenUI();
 		this.fileSaveUI = new FileSaveUI();
 		this.fileNewSaveUI = new FileNewSaveUI();
 		this.fileWrite = new FileWrite();
+		this.fileRead = new FileRead();
 		this.jsonController = new JsonController();
+		
 	}
 
 	public void makeUIOpenFile() {
@@ -31,8 +36,15 @@ public class FileController {
 
 	private void fileOpen(int openRes) {
 		this.file = fileOpenUI.getSelectedFile();
-		if (openRes == FileOpenUI.APPROVE_OPTION)
-			System.out.println(file.getName());
+		
+		if (openRes == FileOpenUI.APPROVE_OPTION){
+			System.out.println(file.getAbsolutePath());
+			//읽어온 파일 READ
+			json = fileRead.readJson(file.getAbsolutePath());
+			//MainUI의 트리 새로 생성
+			MainUI.setTreeClass(new TreeClass(jsonController.getJson(json)));
+			//System.out.println(jsonController.getJson(json));
+		}
 	}
 
 	public void makeUISaveFile() {
@@ -40,7 +52,7 @@ public class FileController {
 			int saveRes = fileSaveUI.showSaveDialog(null);
 			fileSave(saveRes);
 		} else
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 	}
 	
 
@@ -52,7 +64,7 @@ public class FileController {
 			System.out.println("저장 경로 : " + fileSaveUI.getSelectedFile().toString());
 			this.filePath = fileSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 		}
 	}
 	
@@ -67,7 +79,7 @@ public class FileController {
 			System.out.println("새 저장 경로 : " + fileNewSaveUI.getSelectedFile().toString());
 			this.filePath = fileNewSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 		}
 	}
 

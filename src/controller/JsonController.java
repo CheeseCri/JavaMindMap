@@ -15,10 +15,10 @@ public class JsonController {
 		return json;
 	}
 	//Json의 내용을 TreeClass로 변환 시킨후 리턴 
-	public TreeClass getJson(String json) {
-		TreeClass tree;
+	public Node getJson(String json) {
+		Node root;
 		Gson gson = new Gson();
-		tree = gson.fromJson(json, TreeClass.class);
-		return tree;
+		root = gson.fromJson(json, Node.class);
+		return root;
 	}
 }
