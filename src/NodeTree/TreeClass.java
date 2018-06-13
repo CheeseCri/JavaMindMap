@@ -6,6 +6,9 @@ public class TreeClass {
 	private Node cur;
 	private Node root; // root
 	
+	public TreeClass(){
+	}
+	
 	public TreeClass(Node root){
 		this.root = root;
 	}

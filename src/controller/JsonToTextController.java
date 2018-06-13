@@ -9,6 +9,10 @@ public class JsonToTextController {
 	private int depth = 0;
 	private String buf = "";
 	
+	public void JsonToTextConroller(){
+		buf = "";
+	}
+	
 	public String JsonToTextArea(Node parent, int depth) {
 		for(int i = 0; i < depth; i++){
 			buf = buf + '\t';
@@ -19,11 +23,6 @@ public class JsonToTextController {
 				JsonToTextArea(temp, depth + 1);
 			}
 		}
-		System.out.println(buf);
 		return buf;
 	}
-	
-	
-	
-	
 }

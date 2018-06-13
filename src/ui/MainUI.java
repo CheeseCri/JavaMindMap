@@ -123,7 +123,11 @@ public class MainUI extends JFrame {
 
       
       MenuUI menuUI = new MenuUI(mainMenuBar);
-      menuUI.setTextEditorPane(this.textEditorPane);
+      menuUI.setTextEditorPane(textEditorPane);
+      ToolBarUI toolBarUI = new ToolBarUI(toolBar);
+      toolBarUI.setTextEditorPane(textEditorPane);
+      
+      
       
       /* Add Attribute in settingPanel */
       settingPane.setLayout(new GridLayout(6,1,50,100));
