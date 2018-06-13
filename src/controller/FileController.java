@@ -40,7 +40,7 @@ public class FileController {
 			int saveRes = fileSaveUI.showSaveDialog(null);
 			fileSave(saveRes);
 		} else
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 	}
 	
 
@@ -52,7 +52,7 @@ public class FileController {
 			System.out.println("저장 경로 : " + fileSaveUI.getSelectedFile().toString());
 			this.filePath = fileSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class FileController {
 			System.out.println("새 저장 경로 : " + fileNewSaveUI.getSelectedFile().toString());
 			this.filePath = fileNewSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
-			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getParent()));
+			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 		}
 	}
 

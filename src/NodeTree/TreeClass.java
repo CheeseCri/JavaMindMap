@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class TreeClass {
 	private Node cur;
-	private Node parent; // root
+	private Node root; // root
 	
 	public TreeClass(String name) {
-		parent = new Node(name, 0);
+		root = new Node(name, 0 , 360, 280);
 	}
 
 	public Node searchNodeById(int id) {
 		
 		Node node = null;
 		
-		if(id == 0) return parent;
-		for(Node temp : parent.getChildren()) {
+		if(id == 0) return root;
+		for(Node temp : root.getChildren()) {
 			if(temp.getId() == id)
 				return temp;
 			else if(temp.getChildren().size() != 0)
@@ -44,8 +44,8 @@ public class TreeClass {
 	}
 	
 	public void print(int depth) {
-		System.out.println("detph = " + depth + " " + parent);
-		for(Node temp : parent.getChildren()) {
+		System.out.println("detph = " + depth + " " + root);
+		for(Node temp : root.getChildren()) {
 			print(temp, depth +1);
 		}
 	}
@@ -69,13 +69,13 @@ public class TreeClass {
 	}
 
 
-	public Node getParent() {
-		return parent;
+	public Node getRoot() {
+		return root;
 	}
 
 
-	public void setParent(Node parent) {
-		this.parent = parent;
+	public void setRoot(Node parent) {
+		this.root = parent;
 	}
 	
 	

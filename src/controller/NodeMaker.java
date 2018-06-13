@@ -30,7 +30,7 @@ public class NodeMaker {
 		} // set Root in Tree
 		
 		ArrayList<Integer> idList = new ArrayList<Integer>();
-		idList.add(0,treeClass.getParent().getId());
+		idList.add(0,treeClass.getRoot().getId());
 	
 		while(stk.hasMoreTokens()) {
 			line = stk.nextToken();
@@ -39,8 +39,10 @@ public class NodeMaker {
 			Node parentNode = treeClass.searchNodeById(parentId);
 			if(parentNode == null) 
 				System.out.println("WRONG");
-			parentNode.add(line.trim(), id);
-	
+			Node addNode = parentNode.add(line.trim(), id);
+			addNode.setParent(parentNode);
+			addNode.init();
+			
 			if(idList.size() == getTapCount(line)) { // 그 단꼐가 이전에 없었을 때
 				idList.add(id);
 			} else { // 이미 있었던 거일때

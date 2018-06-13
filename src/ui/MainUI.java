@@ -144,12 +144,16 @@ public class MainUI extends JFrame {
       super.add(menuPanel, BorderLayout.NORTH);
       
       /* addListenr button */
+      TextAreaButtonListener textAreaButtonListener = new TextAreaButtonListener(textEditorPane, this.mindMapPane);
+      textAreaButtonListener.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
+      textAreaButton.addActionListener(textAreaButtonListener);
       
-      textAreaButton.addActionListener(new TextAreaButtonListener(textEditorPane));
 
       
       /* MainFrame Visible and Setting */
       super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      super.pack();
       super.pack();
       super.setVisible(true);
       
