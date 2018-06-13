@@ -165,6 +165,5 @@ public class MainUI extends JFrame {
 		MainUI.treeClass = treeClass;
 	}
 	   
-   
-
+  
 }

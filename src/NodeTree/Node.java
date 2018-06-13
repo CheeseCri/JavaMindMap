@@ -9,7 +9,7 @@ public class Node {
 		private int w;
 		private int h;
 		private String color;
-		private Node parent;
+		private transient Node parent;
 		private int id;
 		private ArrayList<Node> children;
 		

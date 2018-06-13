@@ -66,8 +66,17 @@ public class MenuUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//fileWrite.writeJson("./test", jsonController.setJson(MainUI.getTreeClass().getParent()));
-				System.out.println(jsonController.setJson(MainUI.getTreeClass().getParent()));
+				//System.out.println(jsonController.setJson(MainUI.getTreeClass().getParent()));
+				fileController.makeUISaveFile();			
+			}
+		});
+		
+		saveFileOtherName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				fileController.makeUINewSaveFile();
 			}
 		});
 		

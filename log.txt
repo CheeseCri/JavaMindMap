@@ -1,0 +1,21 @@
+detph = 0 id = 0 string = test
+depth = 1 id = 1 string = test2
+depth = 1 id = 2 string = test3
+depth = 2 id = 3 string = test4
+depth = 1 id = 4 string = test5
+저장 경로 : C:\Users\yungh\Documents\b
+detph = 0 id = 0 string = test
+depth = 1 id = 1 string = test2
+depth = 1 id = 2 string = test3
+depth = 2 id = 3 string = test4
+depth = 1 id = 4 string = test5
+depth = 2 id = 5 string = tes6
+새 저장 경로 : C:\Users\yungh\Documents\b
+새 저장 경로 : C:\Users\yungh\Documents\c
+detph = 0 id = 0 string = test
+depth = 1 id = 1 string = test2
+depth = 1 id = 2 string = test3
+depth = 2 id = 3 string = test4
+depth = 1 id = 4 string = test5
+depth = 2 id = 5 string = tes6
+depth = 1 id = 6 string = c
