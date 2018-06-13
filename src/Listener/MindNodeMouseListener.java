@@ -2,14 +2,21 @@ package Listener;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JTextField;
 
 import NodeTree.MindNode;
 import NodeTree.Node;
 
-public class MindNodeMouseListener implements MouseListener{
+public class MindNodeMouseListener implements MouseListener, MouseMotionListener{
 
+	private int startX;
+	private int startY;
+	private int endX;
+	private int endY;
+	private boolean isDraged;
+	private boolean isResize;
 	private JTextField settingItemNameEdit;
 	private JTextField settingItemXEdit;
 	private JTextField settingItemYEdit;
@@ -35,7 +42,6 @@ public class MindNodeMouseListener implements MouseListener{
 		Node node = source.getNode();
 //		System.out.println(source.getText());
 		setSettingField(node.getName(), node.getX(), node.getY(), node.getW(), node.getH(), node.getColor());
-		node.setColor("FFDFDD");
 		// TODO Auto-generated method stub
 		
 	}
@@ -63,13 +69,45 @@ public class MindNodeMouseListener implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println("PRESS ? isDrage = " + this.isDraged);
+		
+		if(e.getX() == 0 || e.getY() == 0) {
+			// TODO DRAG FOR RESIZE
+			this.isResize = true;
+		} else {
+			this.startX = e.getX();
+			this.startY = e.getY();
+		}
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		MindNode thisMindNode = (MindNode)e.getSource();
+		Node node = thisMindNode.getNode();
+		if(isDraged == true && isResize == false) {
+			System.out.println("X = "+e.getXOnScreen() + " Y = " +e.getYOnScreen());
+			endX = e.getX();
+			endY = e.getY();
+			node.setX(node.getX()+ endX - startX);
+			node.setY(node.getY() + endY - startY);
+			thisMindNode.setLocation(node.getX(), node.getY());
+			thisMindNode.getParent().setVisible(false);
+			thisMindNode.getParent().setVisible(true);
+			this.isDraged = false;
+		}
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		this.isDraged = true;
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
 	}
 
 	
