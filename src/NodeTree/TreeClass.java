@@ -6,8 +6,15 @@ public class TreeClass {
 	private Node cur;
 	private Node root; // root
 	
+	public TreeClass(){
+	}
+	
+	public TreeClass(Node root){
+		this.root = root;
+	}
+	
 	public TreeClass(String name) {
-		root = new Node(name, 0 , 360, 280);
+		root = new Node(name, 0, 360, 280);
 	}
 
 	public Node searchNodeById(int id) {
@@ -74,11 +81,7 @@ public class TreeClass {
 	}
 
 
-	public void setRoot(Node parent) {
-		this.root = parent;
+	public void setRoot(Node root) {
+		this.root = root;
 	}
-	
-	
-	
-	
 }

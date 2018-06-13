@@ -123,6 +123,11 @@ public class MainUI extends JFrame {
 
       
       MenuUI menuUI = new MenuUI(mainMenuBar);
+      menuUI.setTextEditorPane(textEditorPane);
+      ToolBarUI toolBarUI = new ToolBarUI(toolBar);
+      toolBarUI.setTextEditorPane(textEditorPane);
+      
+      
       
       /* Add Attribute in settingPanel */
       settingPane.setLayout(new GridLayout(6,1,50,100));
@@ -167,7 +172,6 @@ public class MainUI extends JFrame {
 	
 	public static void setTreeClass(TreeClass treeClass) {
 		MainUI.treeClass = treeClass;
-	}
-	   
+	}	   
   
 }

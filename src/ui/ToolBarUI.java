@@ -4,56 +4,48 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JToolBar;
 
-import NodeTree.TreeClass;
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
 import controller.JsonToTextController;
 
-public class MenuUI {
-	private JMenuBar menuBar;
+public class ToolBarUI {
+	private JToolBar toolBar;
 	private JTextArea textEditorPane;
-	private JPanel settingPane;
 	private FileController fileController;
 	private FileWrite fileWrite;
 	private JsonController jsonController;
 	
-	public MenuUI(JMenuBar menuBar) {
-		this.menuBar = menuBar;
+	public ToolBarUI(JToolBar toolBar) {
+		this.toolBar = toolBar;
 		
 		fileController = new FileController(this.textEditorPane);
 		fileWrite = new FileWrite();
 		jsonController = new JsonController();
 		
 		
-		JMenu fileMenu = new JMenu("파일");
-		JMenuItem newFile = new JMenuItem("새로 만들기");
-		JMenuItem openFile = new JMenuItem("열기");
-		JMenuItem saveFile = new JMenuItem("저장");
-		JMenuItem saveFileOtherName = new JMenuItem("다른 이름으로 저장");
-		JMenuItem closeProgram = new JMenuItem("닫기");
+		JButton newFile = new JButton("새로 만들기");
+		JButton openFile = new JButton("열기");
+		JButton saveFile = new JButton("저장");
+		JButton saveFileOtherName = new JButton("다른 이름으로 저장");
+		JButton closeProgram = new JButton("닫기");
 		
-		fileMenu.add(newFile);
-		fileMenu.add(openFile);
-		fileMenu.add(saveFile);
-		fileMenu.add(saveFileOtherName);
-		fileMenu.add(closeProgram);
+		JButton acceptText = new JButton("적용");
+		JButton acceptSetting = new JButton("변경");
 		
-		JMenu mindMapMenu = new JMenu("마인드맵");
-		JMenuItem acceptText = new JMenuItem("적용");
-		JMenuItem acceptSetting = new JMenuItem("변경");
+		toolBar.add(newFile);
+		toolBar.add(openFile);
+		toolBar.add(saveFile);
+		toolBar.add(saveFileOtherName);
+		toolBar.add(closeProgram);
 		
-		mindMapMenu.add(acceptText);
-		mindMapMenu.add(acceptSetting);
-		
-		this.menuBar.add(fileMenu);
-		this.menuBar.add(mindMapMenu);
-		
+		toolBar.add(acceptText);
+		toolBar.add(acceptSetting);
 		
 		openFile.addActionListener(new ActionListener() {
 			

@@ -2,6 +2,9 @@ package controller;
 
 import java.io.File;
 
+import javax.swing.JTextArea;
+
+import NodeTree.TreeClass;
 import ui.FileNewSaveUI;
 import ui.FileOpenUI;
 import ui.FileSaveUI;
@@ -9,19 +12,26 @@ import ui.MainUI;
 
 public class FileController {
 	private File file;
+	private JTextArea textEditorPane;
 	private static String filePath = "";
 	private FileOpenUI fileOpenUI;
 	private FileSaveUI fileSaveUI;
 	private FileNewSaveUI fileNewSaveUI;
 	private FileWrite fileWrite;
+	private FileRead fileRead;
 	private JsonController jsonController;
+	private String json;
+	private JsonToTextController jsonToText;
 
-	public FileController() {
+	public FileController(JTextArea	textEditorPane) {
+		this.textEditorPane = textEditorPane;
 		this.fileOpenUI = new FileOpenUI();
 		this.fileSaveUI = new FileSaveUI();
 		this.fileNewSaveUI = new FileNewSaveUI();
 		this.fileWrite = new FileWrite();
+		this.fileRead = new FileRead();
 		this.jsonController = new JsonController();
+		
 	}
 
 	public void makeUIOpenFile() {
@@ -31,8 +41,17 @@ public class FileController {
 
 	private void fileOpen(int openRes) {
 		this.file = fileOpenUI.getSelectedFile();
-		if (openRes == FileOpenUI.APPROVE_OPTION)
-			System.out.println(file.getName());
+		
+		if (openRes == FileOpenUI.APPROVE_OPTION){
+			System.out.println("불러오기 경로 :" + file.getAbsolutePath());
+			//읽어온 파일 READ
+			json = fileRead.readJson(file.getAbsolutePath());
+			//MainUI의 트리 새로 생성
+			MainUI.setTreeClass(new TreeClass(jsonController.getJson(json)));
+			//System.out.println(jsonController.getJson(json));
+			jsonToText = new JsonToTextController();
+			textEditorPane.setText(jsonToText.JsonToTextArea(MainUI.getTreeClass().getRoot(), 0));
+		}
 	}
 
 	public void makeUISaveFile() {
@@ -74,5 +93,12 @@ public class FileController {
 	public static String getFilePath() {
 		return filePath;
 	}
+	
+	public JTextArea getTextEditorPane() {
+		return textEditorPane;
+	}
 
+	public void setTextEditorPane(JTextArea textEditPane) {
+		this.textEditorPane = textEditPane;
+	}
 }
