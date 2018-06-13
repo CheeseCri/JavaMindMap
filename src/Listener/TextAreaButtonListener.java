@@ -12,7 +12,6 @@ import controller.NodeMaker;
 import ui.MainUI;
 
 public class TextAreaButtonListener implements ActionListener{
-
 	private JTextArea textArea;
 	private JPanel mindMapPane;
 	private JTextField n;

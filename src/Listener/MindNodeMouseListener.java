@@ -35,7 +35,7 @@ public class MindNodeMouseListener implements MouseListener{
 		Node node = source.getNode();
 //		System.out.println(source.getText());
 		setSettingField(node.getName(), node.getX(), node.getY(), node.getW(), node.getH(), node.getColor());
-		node.setColor("FFDFDD");
+		//node.setColor("FFDFDD");
 		// TODO Auto-generated method stub
 		
 	}

@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import Listener.TextAreaButtonListener;
+import Listener.AttributeButtenListener;
 import NodeTree.TreeClass;
 
 public class MainUI extends JFrame {
@@ -153,6 +154,12 @@ public class MainUI extends JFrame {
       textAreaButtonListener.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
     		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
       textAreaButton.addActionListener(textAreaButtonListener);
+      
+      AttributeButtenListener attributeButtenListener = new AttributeButtenListener();
+      attributeButtenListener.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
+      settingAreaButton.addActionListener(attributeButtenListener);
+      
       
 
       
