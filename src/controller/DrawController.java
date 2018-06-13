@@ -51,6 +51,7 @@ public class DrawController {
 	private void drawChildrenNode(MindNode parent) {
 		
 		parent.addMouseListener(mindNodeMouseListener);
+		parent.addMouseMotionListener(mindNodeMouseListener);
 		this.mindMapPane.add(parent);
 		if(parent.getNode().getChildren().size() == 0) return;
 		for(Node child : parent.getNode().getChildren()) {

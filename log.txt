@@ -1,0 +1,17 @@
+불러오기 경로 :D:\myworkspace\JavaMindmap\asdasd
+detph = 0 id = 0 string = ak [id = 1 string = scar [id = 2 string = 5탄 []], id = 3 string = ump [id = 4 string = 9탄 []]]
+depth = 1 id = 1 string = scar [id = 2 string = 5탄 []]
+depth = 2 id = 2 string = 5탄 []
+depth = 1 id = 3 string = ump [id = 4 string = 9탄 []]
+depth = 2 id = 4 string = 9탄 []
+java.awt.Rectangle[x=360,y=280,width=80,height=60]
+java.awt.Rectangle[x=240,y=190,width=80,height=60]
+java.awt.Rectangle[x=120,y=100,width=80,height=60]
+java.awt.Rectangle[x=480,y=190,width=80,height=60]
+java.awt.Rectangle[x=360,y=100,width=80,height=60]
+ak
+360
+280
+80
+60
+FFFFFF
