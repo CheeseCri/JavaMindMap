@@ -1,5 +1,6 @@
 package Listener;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -10,7 +11,7 @@ import NodeTree.MindNode;
 import NodeTree.Node;
 
 public class MindNodeMouseListener implements MouseListener, MouseMotionListener{
-
+	private static MindNode selectedMindNode;
 	private int startX;
 	private int startY;
 	private int endX;
@@ -38,10 +39,26 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(selectedMindNode != null)
+			selectedMindNode.setBackground(new Color(Integer.parseInt(selectedMindNode.getNode().getColor(),16)));
 		MindNode source = (MindNode)e.getSource();
 		Node node = source.getNode();
 //		System.out.println(source.getText());
 		setSettingField(node.getName(), node.getX(), node.getY(), node.getW(), node.getH(), node.getColor());
+		
+		selectedMindNode = source;
+		int rgb = Integer.parseInt(source.getNode().getColor(),16);
+		int red = rgb & 0xFF0000 >> 16;
+		int green = rgb & 0x00FF00 >> 8;
+		int blue = rgb & 0x0000FF;
+		
+		Color reverseColor = new Color(
+				255 - red,
+				255 - green,
+				255 - blue);
+		
+//		Color reverseColor = Color.MAGENTA; 
+		selectedMindNode.setBackground(reverseColor);
 		// TODO Auto-generated method stub
 		
 	}

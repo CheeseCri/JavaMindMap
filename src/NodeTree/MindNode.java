@@ -19,7 +19,8 @@ public class MindNode extends JLabel{
 		super.setText(node.getName());
 		super.setLocation(this.node.getX(), this.node.getY());
 		super.setSize(this.node.getW(), this.node.getH());
-		super.setBackground(new Color(0));
+		super.setOpaque(true);
+		super.setBackground(new Color(Integer.parseInt(node.getColor(),16)));
 		super.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		super.setHorizontalAlignment(CENTER);
 		System.out.println(super.getBounds());
