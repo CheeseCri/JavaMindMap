@@ -237,4 +237,5 @@ public class MindNode extends JLabel {
 
 	}
 
+
 }
