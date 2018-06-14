@@ -1,6 +1,7 @@
 package NodeTree;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JLabel;
 import javax.swing.border.SoftBevelBorder;
@@ -36,7 +37,19 @@ public class MindNode extends JLabel {
 	}
 	
 	public void Draw(){
+		
 		if(parentNode != null){
+			for(Component tmp : super.getParent().getComponents()) {
+				if(tmp.getName() != null || tmp.getName().equals(""))
+					continue;
+				for(Node child : node.getChildren()) {
+					if(tmp.getName().equals(child.getId()+"")) {
+						MindNode h = (MindNode)tmp;
+						h.Draw();
+					}
+				}
+				
+			}
 			this.getShort();
 			drawArrow = new DrawArrow(cX, cY, pX, pY);
 			super.getParent().add(drawArrow);
