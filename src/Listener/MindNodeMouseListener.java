@@ -40,8 +40,10 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (selectedMindNode != null)
+		if (selectedMindNode != null){
 			selectedMindNode.setBackground(new Color(Integer.parseInt(selectedMindNode.getNode().getColor(), 16)));
+			selectedMindNode.setForeground(new Color(0x000000));
+		}
 		MindNode source = (MindNode) e.getSource();
 		Node node = source.getNode();
 		// System.out.println(source.getText());
@@ -57,6 +59,7 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 
 		// Color reverseColor = Color.MAGENTA;
 		selectedMindNode.setBackground(reverseColor);
+		selectedMindNode.setForeground(new Color(0xFFFFFF));
 		// TODO Auto-generated method stub
 	}
 
