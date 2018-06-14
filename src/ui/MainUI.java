@@ -122,8 +122,9 @@ public class MainUI extends JFrame {
       menuPanel.add(mainMenuBar, BorderLayout.NORTH);
       menuPanel.add(toolBar, BorderLayout.SOUTH);
 
-      
-      MenuUI menuUI = new MenuUI(mainMenuBar);
+      System.out.println("MainUI : " + mindMapPane);
+      MenuUI menuUI = new MenuUI(mainMenuBar, mindMapPane, settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
       menuUI.setTextEditorPane(textEditorPane);
       menuUI.setMindMapPane(mindMapPane);
       menuUI.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 

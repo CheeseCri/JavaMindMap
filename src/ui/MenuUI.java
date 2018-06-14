@@ -32,10 +32,18 @@ public class MenuUI {
 	private JTextField h;
 	private JTextField c;
 
-	public MenuUI(JMenuBar menuBar) {
+	public MenuUI(JMenuBar menuBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w, JTextField h, JTextField c) {
 		this.menuBar = menuBar;
-
+		this.mindMapPane = mindMapPane;
+		this.n = n;
+		this.y = y;
+		this.x = x;
+		this.w = w;
+		this.h = h;
+		this.c = c;
 		fileController = new FileController(this.textEditorPane);
+		fileController.getDrawController().setMindMapPane(mindMapPane);
+		fileController.getDrawController().initEditorMemeber(n, x, y, w, h, c);
 		fileWrite = new FileWrite();
 		jsonController = new JsonController();
 

@@ -41,6 +41,5 @@ public class DrawArrow extends JComponent {
 //		for (int x = 15; x < 200; x += 16)
 //			drawArrow(g, x, x, x, 150);
 		drawArrow(g, x, y, w, h);
-		System.out.print("this is paint\n");
 	}
 }

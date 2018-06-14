@@ -62,10 +62,7 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		
 //		Color reverseColor = Color.MAGENTA; 
 		selectedMindNode.setBackground(reverseColor);
-		// TODO Auto-generated method stub
-		
-		System.out.println(selectedMindNode.getParentNode());
-		
+		// TODO Auto-generated method stub		
 	}
 	private void setSettingField(String name, int x, int y, int w, int h, String color) {
 		settingItemNameEdit.setText(name);
@@ -110,6 +107,7 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		// TODO Auto-generated method stub
 		MindNode thisMindNode = (MindNode)e.getSource();
 		Node node = thisMindNode.getNode();
+		thisMindNode.Draw();
 		endX = e.getX();
 		endY = e.getY();
 	

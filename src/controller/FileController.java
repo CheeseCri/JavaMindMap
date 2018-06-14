@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.swing.JTextArea;
 
+import Listener.TreeManagement;
 import NodeTree.TreeClass;
 import ui.FileNewSaveUI;
 import ui.FileOpenUI;
@@ -21,6 +22,9 @@ public class FileController {
 	private FileRead fileRead;
 	private JsonController jsonController;
 	private String json;
+	private DrawController drawController;
+	
+
 	private JsonToTextController jsonToText;
 
 	public FileController(JTextArea	textEditorPane) {
@@ -31,7 +35,7 @@ public class FileController {
 		this.fileWrite = new FileWrite();
 		this.fileRead = new FileRead();
 		this.jsonController = new JsonController();
-		
+		this.drawController = new DrawController();
 	}
 
 	public void makeUIOpenFile() {
@@ -51,6 +55,9 @@ public class FileController {
 			//System.out.println(jsonController.getJson(json));
 			jsonToText = new JsonToTextController();
 			textEditorPane.setText(jsonToText.JsonToTextArea(MainUI.getTreeClass().getRoot(), 0));
+			TreeManagement treeManagement = new TreeManagement();
+			treeManagement.MakeParent();
+			drawController.drawMindMap();
 		}
 	}
 
@@ -100,5 +107,13 @@ public class FileController {
 
 	public void setTextEditorPane(JTextArea textEditPane) {
 		this.textEditorPane = textEditPane;
+	}
+	
+	public DrawController getDrawController() {
+		return drawController;
+	}
+
+	public void setDrawController(DrawController drawController) {
+		this.drawController = drawController;
 	}
 }
