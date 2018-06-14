@@ -98,11 +98,14 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		MindNode thisMindNode = (MindNode) e.getSource();
-		Node node = thisMindNode.getNode();
 		thisMindNode.Draw();
 		endX = e.getX();
 		endY = e.getY();
 
+		if(isDraged == true ) {
+			mouseClicked(e);
+		}
+		
 		this.isDraged = false;
 		this.isResize = false;
 		thisMindNode.setCursor(Cursor.getDefaultCursor());
