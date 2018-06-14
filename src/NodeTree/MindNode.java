@@ -30,30 +30,47 @@ public class MindNode extends JLabel {
 		super.setHorizontalAlignment(CENTER);
 		System.out.println(super.getBounds());
 		this.parentNode = node.getParent();
-		if(parentNode != null){
+		if (parentNode != null) {
 			this.getShort();
 			drawArrow = new DrawArrow(cX, cY, pX, pY);
 		}
 	}
-	
-	public void Draw(){
-		
-		if(parentNode != null){
-			for(Component tmp : super.getParent().getComponents()) {
-				if(tmp.getName() == null || tmp.getName().equals(""))
+
+	public void Draw() {
+		if (parentNode != null) {
+			// if (super.getParent().getComponents() != null ||
+			// super.getParent().getComponents().length != 0) {
+			for (Component tmp : super.getParent().getComponents()) {
+				System.out.println(tmp.getName());
+				if (tmp.getName() == null || tmp.getName().equals(""))
 					continue;
-				for(Node child : node.getChildren()) {
-					if(tmp.getName().equals(child.getId()+"")) {
-						MindNode h = (MindNode)tmp;
+				for (Node child : node.getChildren()) {
+					System.out.println("iddddd : " + tmp.getName() + "," + child.getId());
+					if (tmp.getName().equals(child.getId() + "")) {
+						MindNode h = (MindNode) tmp;
 						h.Draw();
 					}
 				}
-				
 			}
+			// }
 			this.getShort();
+			super.getParent().remove(drawArrow);
 			drawArrow = new DrawArrow(cX, cY, pX, pY);
 			super.getParent().add(drawArrow);
 		}
+		else
+			for (Component tmp : super.getParent().getComponents()) {
+				System.out.println(tmp.getName());
+				if (tmp.getName() == null || tmp.getName().equals(""))
+					continue;
+				for (Node child : node.getChildren()) {
+					System.out.println("iddddd : " + tmp.getName() + "," + child.getId());
+					if (tmp.getName().equals(child.getId() + "")) {
+						MindNode h = (MindNode) tmp;
+						h.Draw();
+					}
+				}
+			}
 	}
 
 	public Node getNode() {
@@ -71,8 +88,8 @@ public class MindNode extends JLabel {
 	public void setParentNode(Node parentNode) {
 		this.parentNode = parentNode;
 	}
-	
-	public DrawArrow getDrawArrow(){
+
+	public DrawArrow getDrawArrow() {
 		return drawArrow;
 	}
 
@@ -249,6 +266,5 @@ public class MindNode extends JLabel {
 		System.out.println(this.cX + "," + this.cY);
 
 	}
-
 
 }
