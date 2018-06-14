@@ -1,6 +1,7 @@
 package Listener;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -86,15 +87,17 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("PRESS ? isDrage = " + this.isDraged);
+		System.out.println("PRESS ? Point = " + e.getPoint());
 		
-		if(e.getX() == 0 || e.getY() == 0) {
-			// TODO DRAG FOR RESIZE
-			this.isResize = true;
+		if(isResize == true) {
+			this.startX = e.getXOnScreen();
+			this.startY = e.getYOnScreen();
 		} else {
 			this.startX = e.getX();
 			this.startY = e.getY();
 		}
+			
+		
 		
 	}
 
@@ -103,28 +106,183 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		// TODO Auto-generated method stub
 		MindNode thisMindNode = (MindNode)e.getSource();
 		Node node = thisMindNode.getNode();
-		if(isDraged == true && isResize == false) {
-			System.out.println("X = "+e.getXOnScreen() + " Y = " +e.getYOnScreen());
-			endX = e.getX();
-			endY = e.getY();
-			node.setX(node.getX()+ endX - startX);
-			node.setY(node.getY() + endY - startY);
-			thisMindNode.setLocation(node.getX(), node.getY());
-			thisMindNode.getParent().setVisible(false);
-			thisMindNode.getParent().setVisible(true);
-			this.isDraged = false;
-		}
+		endX = e.getX();
+		endY = e.getY();
+	
+		this.isDraged = false;
+		this.isResize = false;
+		thisMindNode.setCursor(Cursor.getDefaultCursor());
+		thisMindNode.getParent().setVisible(false);
+		thisMindNode.getParent().setVisible(true);
+		System.out.println("REX = " + endX + " REY = " + endY);
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		this.isDraged = true;
+		MindNode thisMindNode = (MindNode)e.getSource();
+		Node node = thisMindNode.getNode();
+		endX = e.getX();
+		endY = e.getY();
+		if(isResize == false) {
+			thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+			node.setX(node.getX() + endX - startX);
+			node.setY(node.getY() + endY - startY);
+			thisMindNode.setLocation(node.getX(), node.getY());
+//			thisMindNode.getParent().setVisible(false);
+//			thisMindNode.getParent().setVisible(true);
+			thisMindNode.getParent().repaint();
+			
+		} else {
+			 
+			int x = -1;
+			int y = -1;
+			int w = -1;
+			int h = -1;
+			
+			endX = e.getXOnScreen();
+			endY = e.getYOnScreen();
+			
+			if(thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR))) {
+				// mindnode x 위치는 - 그대로 변경, 사이즈는 +로
+				// only X
+				
+				x = thisMindNode.getX() + endX - startX;
+				w = thisMindNode.getWidth() - endX + startX;
+//				System.out.println("getX = " + endX + " getY = " + endY);
+//				System.out.println("getX = " + e.getPoint().getX() + " getY = " + e.getPoint().getY());
+				//				System.out.println("x = " + x + " w = " + w);
+//				System.out.println("Node BOund = " + node.getX() + " " + node.getY() + " " + node.getW() + " " + node.getH());
+				
+				
+//				thisMindNode.getParent().repaint();
+				
+				
+			} else if(thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR))) { 
+				
+				w = thisMindNode.getWidth() + endX - startX;
+				
+				// x 위치는
+				// only X
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR))) { 
+				// only Y
+				
+				y = thisMindNode.getY() + endY - startY;
+				h = thisMindNode.getHeight() - endY + startY;
+//				System.out.println("getX = " + e.getX() + " getY = " + e.getY());
+//				resizeNode(thisMindNode,x,y,w,h);
+//				thisMindNode.getParent().repaint();
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR))) {
+				// only Y
+				h = thisMindNode.getHeight() + endY - startY;
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR))) {
+				y = thisMindNode.getY() + endY - startY;
+				h = thisMindNode.getHeight() - endY + startY;
+				x = thisMindNode.getX() + endX - startX;
+				w = thisMindNode.getWidth() - endX + startX;
+				// XY
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR))) {
+				// XY
+				y = thisMindNode.getY() + endY - startY;
+				h = thisMindNode.getHeight() - endY + startY;
+				w = thisMindNode.getWidth() + endX - startX;
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR))) {
+				x = thisMindNode.getX() + endX - startX;
+				w = thisMindNode.getWidth() - endX + startX;
+				h = thisMindNode.getHeight() + endY - startY;
+				// XY
+				
+			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR))) {
+				
+				// XY
+				h = thisMindNode.getHeight() + endY - startY;
+				w = thisMindNode.getWidth() + endX - startX;
+				
+			}
+			System.out.println(e.getXOnScreen());
+			System.out.println(startX + " " + startY + " " );
+			System.out.println(endX + " " + endY + " " );
+			
+			startX = endX;
+			startY = endY;
+			
+			resizeNode(thisMindNode,x,y,w,h);
+			
+		}
+	}
+	
+	private void resizeNode(MindNode mindNode, int x, int y, int w, int h) {
+		if( x != -1)
+			mindNode.getNode().setX(x);
+		if( y != -1)
+			mindNode.getNode().setY(y);
+		if( w != -1)
+			mindNode.getNode().setW(w);
+		if( h != -1)
+			mindNode.getNode().setH(h);
+		Node node = mindNode.getNode();
+		mindNode.setBounds(node.getX(), node.getY(), node.getW(), node.getH());
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int x = e.getX();
+		int y = e.getY();
+		int range = 3;
+		
+		MindNode thisMindNode = (MindNode)e.getSource();
+		int width = thisMindNode.getWidth();
+		int height = thisMindNode.getHeight();
+		if( x <= range ) {
+			isResize = true;
+			if( y <= range) {
+				// WEST NORTH
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));
+			}
+			else if ( y >= height - range) {
+				// WEST SOUTH
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
+			}
+			else {
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
+			}
+				
+		}
+		else if ( x >= width - range) {
+			isResize = true;
+			if( y <= range) {
+				// EAST NORTH	
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));
+			}
+			else if ( y >= height - range) {
+				// EAST SOUTH
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
+			}
+			else {
+				thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
+			}
+		}
+		else if ( y <= range ) {
+			// ONLY SOUTH OR NORHT
+			isResize = true;
+			thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
+		}
+		else if ( y >= height- range) {
+			isResize = true;
+			thisMindNode.setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));
+		}
+		else {
+			isResize = false;
+			thisMindNode.setCursor(Cursor.getDefaultCursor());
+		}
+			
 	}
 
 	
