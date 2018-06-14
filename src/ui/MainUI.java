@@ -130,7 +130,8 @@ public class MainUI extends JFrame {
       menuUI.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
     		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
       
-      ToolBarUI toolBarUI = new ToolBarUI(toolBar);
+      ToolBarUI toolBarUI = new ToolBarUI(toolBar, mindMapPane, settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
       toolBarUI.setTextEditorPane(textEditorPane);
       toolBarUI.setMindMapPane(mindMapPane);
       toolBarUI.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 

@@ -32,10 +32,19 @@ public class ToolBarUI {
 	private JTextField h;
 	private JTextField c;
 
-	public ToolBarUI(JToolBar toolBar) {
+	public ToolBarUI(JToolBar toolBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w, JTextField h, JTextField c) {
 		this.toolBar = toolBar;
+		this.mindMapPane = mindMapPane;
+		this.n = n;
+		this.y = y;
+		this.x = x;
+		this.w = w;
+		this.h = h;
+		this.c = c;
 
 		fileController = new FileController(this.textEditorPane);
+		fileController.getDrawController().setMindMapPane(mindMapPane);
+		fileController.getDrawController().initEditorMemeber(n, x, y, w, h, c);
 		fileWrite = new FileWrite();
 		jsonController = new JsonController();
 

@@ -113,6 +113,16 @@ public class MenuUI {
 				// TODO Auto-generated method stub
 				textEditorPane.setText("");
 				mindMapPane.removeAll();
+				mindMapPane.setVisible(false);
+				mindMapPane.setVisible(true);
+				MainUI.setTreeClass(null);
+
+				n.setText("");
+				x.setText("");
+				y.setText("");
+				w.setText("");
+				h.setText("");
+				c.setText("");
 
 			}
 		});
