@@ -76,6 +76,8 @@ public class ToolBarUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				mindMapPane.removeAll();
+				mindMapPane.repaint();
 				fileController.setTextEditorPane(textEditorPane);
 				fileController.makeUIOpenFile();
 			}
