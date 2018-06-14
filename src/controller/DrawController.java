@@ -17,7 +17,7 @@ import ui.MainUI;
 public class DrawController {
 	private DrawArrow drawArrow;
 	private JPanel mindMapPane;
-	
+
 	private JTextField settingItemNameEdit;
 	private JTextField settingItemXEdit;
 	private JTextField settingItemYEdit;
@@ -62,7 +62,7 @@ public class DrawController {
 
 		parent.addMouseListener(mindNodeMouseListener);
 		parent.addMouseMotionListener(mindNodeMouseListener);
-		parent.setName(parent.getNode().getId()+"");
+		parent.setName(parent.getNode().getId() + "");
 		this.mindMapPane.add(parent);
 		if (parent.getParentNode() != null)
 			parent.Draw();
@@ -73,7 +73,7 @@ public class DrawController {
 			drawChildrenNode(childNode);
 		}
 	}
-	
+
 	public JPanel getMindMapPane() {
 		return mindMapPane;
 	}

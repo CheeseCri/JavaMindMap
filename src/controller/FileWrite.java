@@ -5,10 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileWrite {
-	
-	public void writeJson(String filePath, String json){
+
+	public void writeJson(String filePath, String json) {
 		FileOutputStream output;
-		try {			
+		try {
 			output = new FileOutputStream(filePath);
 			output.write(json.getBytes());
 			output.close();
@@ -17,6 +17,5 @@ public class FileWrite {
 			e1.printStackTrace();
 		}
 	}
-	
 
 }

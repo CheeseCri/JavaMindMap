@@ -2,16 +2,18 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Listener.AttributeButtenListener;
+import Listener.TextAreaButtonListener;
 
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import Listener.MindNodeMouseListener;
-import NodeTree.Node;
+
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
@@ -24,6 +26,8 @@ public class ToolBarUI {
 	private FileController fileController;
 	private FileWrite fileWrite;
 	private JsonController jsonController;
+	private AttributeButtenListener attributeButtenListener;
+	private TextAreaButtonListener textAreabuttonListener;
 
 	private JTextField n;
 	private JTextField x;
@@ -32,7 +36,8 @@ public class ToolBarUI {
 	private JTextField h;
 	private JTextField c;
 
-	public ToolBarUI(JToolBar toolBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w, JTextField h, JTextField c) {
+	public ToolBarUI(JToolBar toolBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w, JTextField h, JTextField c
+			, AttributeButtenListener attributeButtenListener, TextAreaButtonListener textAreaButtonListener) {
 		this.toolBar = toolBar;
 		this.mindMapPane = mindMapPane;
 		this.n = n;
@@ -41,7 +46,8 @@ public class ToolBarUI {
 		this.w = w;
 		this.h = h;
 		this.c = c;
-
+		this.attributeButtenListener = attributeButtenListener;
+		this.textAreabuttonListener = textAreaButtonListener;
 		fileController = new FileController(this.textEditorPane);
 		fileController.getDrawController().setMindMapPane(mindMapPane);
 		fileController.getDrawController().initEditorMemeber(n, x, y, w, h, c);
@@ -121,6 +127,10 @@ public class ToolBarUI {
 				c.setText("");
 			}
 		});
+		
+		acceptText.addActionListener(textAreaButtonListener);
+
+		acceptSetting.addActionListener(attributeButtenListener);
 
 	}
 

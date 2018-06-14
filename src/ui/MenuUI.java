@@ -2,6 +2,8 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Listener.AttributeButtenListener;
+import Listener.TextAreaButtonListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -10,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import NodeTree.TreeClass;
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
@@ -19,11 +20,12 @@ import controller.JsonToTextController;
 public class MenuUI {
 	private JMenuBar menuBar;
 	private JTextArea textEditorPane;
-	private JPanel settingPane;
 	private JPanel mindMapPane;
 	private FileController fileController;
 	private FileWrite fileWrite;
 	private JsonController jsonController;
+	private AttributeButtenListener attributeButtenListener;
+	private TextAreaButtonListener textAreabuttonListener;
 
 	private JTextField n;
 	private JTextField x;
@@ -32,7 +34,9 @@ public class MenuUI {
 	private JTextField h;
 	private JTextField c;
 
-	public MenuUI(JMenuBar menuBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w, JTextField h, JTextField c) {
+	public MenuUI(JMenuBar menuBar, JPanel mindMapPane, JTextField n, JTextField x, JTextField y, JTextField w,
+			JTextField h, JTextField c, AttributeButtenListener attributeButtenListener,
+			TextAreaButtonListener textAreaButtonListener) {
 		this.menuBar = menuBar;
 		this.mindMapPane = mindMapPane;
 		this.n = n;
@@ -41,6 +45,8 @@ public class MenuUI {
 		this.w = w;
 		this.h = h;
 		this.c = c;
+		this.attributeButtenListener = attributeButtenListener;
+		this.textAreabuttonListener = textAreaButtonListener;
 		fileController = new FileController(this.textEditorPane);
 		fileController.getDrawController().setMindMapPane(mindMapPane);
 		fileController.getDrawController().initEditorMemeber(n, x, y, w, h, c);
@@ -126,6 +132,11 @@ public class MenuUI {
 
 			}
 		});
+
+		acceptText.addActionListener(textAreaButtonListener);
+
+		acceptSetting.addActionListener(attributeButtenListener);
+
 	}
 
 	public JTextArea getTextEditorPane() {
