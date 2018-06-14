@@ -6,8 +6,8 @@ import java.util.Scanner;
 import ui.MenuUI;
 
 public class FileRead {
-	
-	public String readJson(String filePath){
+
+	public String readJson(String filePath) {
 		String json = "";
 
 		try {
@@ -18,9 +18,7 @@ public class FileRead {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return json;
 	}
-	
-	
+
 }

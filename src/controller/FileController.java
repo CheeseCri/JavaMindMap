@@ -23,11 +23,10 @@ public class FileController {
 	private JsonController jsonController;
 	private String json;
 	private DrawController drawController;
-	
 
 	private JsonToTextController jsonToText;
 
-	public FileController(JTextArea	textEditorPane) {
+	public FileController(JTextArea textEditorPane) {
 		this.textEditorPane = textEditorPane;
 		this.fileOpenUI = new FileOpenUI();
 		this.fileSaveUI = new FileSaveUI();
@@ -45,14 +44,15 @@ public class FileController {
 
 	private void fileOpen(int openRes) {
 		this.file = fileOpenUI.getSelectedFile();
-		
-		if (openRes == FileOpenUI.APPROVE_OPTION){
+
+		if (openRes == FileOpenUI.APPROVE_OPTION) {
 			System.out.println("불러오기 경로 :" + file.getAbsolutePath());
-			//읽어온 파일 READ
+			// 읽어온 파일 READ
+			this.filePath = file.getAbsolutePath();
 			json = fileRead.readJson(file.getAbsolutePath());
-			//MainUI의 트리 새로 생성
+			// MainUI의 트리 새로 생성
 			MainUI.setTreeClass(new TreeClass(jsonController.getJson(json)));
-			//System.out.println(jsonController.getJson(json));
+			// System.out.println(jsonController.getJson(json));
 			jsonToText = new JsonToTextController();
 			textEditorPane.setText(jsonToText.JsonToTextArea(MainUI.getTreeClass().getRoot(), 0));
 			TreeManagement treeManagement = new TreeManagement();
@@ -65,10 +65,11 @@ public class FileController {
 		if (filePath.equals("")) {
 			int saveRes = fileSaveUI.showSaveDialog(null);
 			fileSave(saveRes);
-		} else
+		} else if (MainUI.getTreeClass() != null)
 			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
+		else if (MainUI.getTreeClass() == null)
+			fileWrite.writeJson(filePath, "");
 	}
-	
 
 	// filePath가 ""일 경우에는 fileSaveUI를 불러온다.
 	// 그렇지 않은 경우, 저장을 수행한다.
@@ -81,13 +82,13 @@ public class FileController {
 			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
 		}
 	}
-	
+
 	public void makeUINewSaveFile() {
 		int newSaveRes = fileNewSaveUI.showSaveDialog(null);
 		fileNewSave(newSaveRes);
 	}
-	
-	private void fileNewSave(int newSaveRes){
+
+	private void fileNewSave(int newSaveRes) {
 		this.file = fileNewSaveUI.getSelectedFile();
 		if (newSaveRes == FileSaveUI.APPROVE_OPTION) {
 			System.out.println("새 저장 경로 : " + fileNewSaveUI.getSelectedFile().toString());
@@ -100,7 +101,7 @@ public class FileController {
 	public static String getFilePath() {
 		return filePath;
 	}
-	
+
 	public JTextArea getTextEditorPane() {
 		return textEditorPane;
 	}
@@ -108,7 +109,7 @@ public class FileController {
 	public void setTextEditorPane(JTextArea textEditPane) {
 		this.textEditorPane = textEditPane;
 	}
-	
+
 	public DrawController getDrawController() {
 		return drawController;
 	}
