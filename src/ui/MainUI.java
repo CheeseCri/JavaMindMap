@@ -125,8 +125,16 @@ public class MainUI extends JFrame {
       
       MenuUI menuUI = new MenuUI(mainMenuBar);
       menuUI.setTextEditorPane(textEditorPane);
+      menuUI.setMindMapPane(mindMapPane);
+      menuUI.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
+      
       ToolBarUI toolBarUI = new ToolBarUI(toolBar);
       toolBarUI.setTextEditorPane(textEditorPane);
+      toolBarUI.setMindMapPane(mindMapPane);
+      toolBarUI.initEditorMemeber(settingItemNameEdit, settingItemXEdit, settingItemYEdit, 
+    		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
+
       
       
       
@@ -144,7 +152,6 @@ public class MainUI extends JFrame {
       settingPane.add(settingItemHEdit);
       settingPane.add(settingItemColorLabel);
       settingPane.add(settingItemColorEdit);
-      
       
       super.add(textAndSplitPane, BorderLayout.CENTER);
       super.add(menuPanel, BorderLayout.NORTH);
@@ -179,6 +186,6 @@ public class MainUI extends JFrame {
 	
 	public static void setTreeClass(TreeClass treeClass) {
 		MainUI.treeClass = treeClass;
-	}	   
+	}
   
 }
