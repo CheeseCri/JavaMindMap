@@ -12,6 +12,8 @@ import NodeTree.Node;
 
 public class MindNodeMouseListener implements MouseListener, MouseMotionListener{
 	private static MindNode selectedMindNode;
+	
+
 	private int startX;
 	private int startY;
 	private int endX;
@@ -48,10 +50,10 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		
 		selectedMindNode = source;
 		int rgb = Integer.parseInt(source.getNode().getColor(),16);
-		int red = rgb & 0xFF0000 >> 16;
-		int green = rgb & 0x00FF00 >> 8;
-		int blue = rgb & 0x0000FF;
-		
+		int red = (rgb & 0xFF0000) >> 16;
+		int green = (rgb & 0x00FF00) >> 8;
+		int blue = (rgb & 0x0000FF);
+			
 		Color reverseColor = new Color(
 				255 - red,
 				255 - green,
@@ -60,6 +62,8 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 //		Color reverseColor = Color.MAGENTA; 
 		selectedMindNode.setBackground(reverseColor);
 		// TODO Auto-generated method stub
+		
+		System.out.println(selectedMindNode.getParentNode());
 		
 	}
 	private void setSettingField(String name, int x, int y, int w, int h, String color) {
@@ -126,6 +130,13 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
+	public static MindNode getSelectedMindNode() {
+		return selectedMindNode;
+	}
 
+	public static void setSelectedMindNode(MindNode selectedMindNode) {
+		MindNodeMouseListener.selectedMindNode = selectedMindNode;
+	}
 	
 }

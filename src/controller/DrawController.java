@@ -8,6 +8,8 @@ import NodeTree.MindNode;
 import NodeTree.Node;
 import ui.MainUI;
 
+
+
 public class DrawController {
 
 	private JPanel mindMapPane;
