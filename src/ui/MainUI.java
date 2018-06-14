@@ -15,8 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import Listener.TextAreaButtonListener;
 import Listener.AttributeButtenListener;
+import Listener.TextAreaButtonListener;
 import NodeTree.TreeClass;
 
 public class MainUI extends JFrame {
@@ -59,6 +59,7 @@ public class MainUI extends JFrame {
       mindMapPane = new JPanel();
       settingPane = new JPanel();
       textEditorPane = new JTextArea();
+      textEditorPane.setTabSize(textEditorPane.getTabSize()/2);
       menuPanel = new JPanel(new BorderLayout());
       mainMenuBar = new JMenuBar();
       toolBar = new JToolBar();
@@ -92,7 +93,17 @@ public class MainUI extends JFrame {
       super.setLocation(100, 100);
       
       /* Make ScorllPane, Split Pane */
-      JScrollPane mindMapScrollPane = new JScrollPane(mindMapPane);
+      JScrollPane mindMapScrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+      mindMapScrollPane.getViewport().setView(mindMapPane);
+//      mindMapScrollPane.setAutoscrolls(true);
+//      
+//      mindMapPane.addMouseMotionListener(new MouseMotionAdapter() {
+//    	  public void mouseDragged(MouseEvent e) {
+//    		  System.out.println("MOUSE");
+//    	        Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
+//    	        ((JPanel)e.getSource()).scrollRectToVisible(r);
+//    	    }
+//      });
       JScrollPane settingScrollPane = new JScrollPane(settingPane);
       JScrollPane textEditorScrollPane = new JScrollPane(textEditorPane);
       
@@ -114,9 +125,14 @@ public class MainUI extends JFrame {
       mindAndSettingPane.setRightComponent(settingPanel);
       
       /* Init SplitPane */
-      textAndSplitPane.setDividerSize(15);
+      Dimension mindMapPainDimension = new Dimension(2500, 2000);
       textAndSplitPane.setDividerLocation(250);
       mindAndSettingPane.setDividerLocation(800);
+      mindMapPane.setPreferredSize(mindMapPainDimension);
+      System.out.println("Size = " + mindAndSettingPane.getLeftComponent().getPreferredSize());
+      
+      
+      mindMapPane.setSize(mindAndSettingPane.getLeftComponent().getSize());
       
       /* Add MenuPanel and SplitPane in MainFrame */
       menuPanel.add(mainMenuBar, BorderLayout.NORTH);
@@ -168,7 +184,7 @@ public class MainUI extends JFrame {
     		  settingItemWEdit, settingItemHEdit, settingItemColorEdit);
       settingAreaButton.addActionListener(attributeButtenListener);
       
-      
+    
 
       
       /* MainFrame Visible and Setting */
