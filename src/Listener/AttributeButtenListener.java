@@ -59,6 +59,7 @@ public class AttributeButtenListener implements ActionListener {
 		
 		MindNodeMouseListener.getSelectedMindNode().setBounds(
 				Integer.parseInt(x.getText()),Integer.parseInt(y.getText()), Integer.parseInt(w.getText()),Integer.parseInt(h.getText()));
+		MindNodeMouseListener.getSelectedMindNode().Draw();
 		MindNodeMouseListener.getSelectedMindNode().getParent().repaint();
 	}
 

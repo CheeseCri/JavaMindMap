@@ -40,7 +40,7 @@ public class MindNode extends JLabel {
 		
 		if(parentNode != null){
 			for(Component tmp : super.getParent().getComponents()) {
-				if(tmp.getName() != null || tmp.getName().equals(""))
+				if(tmp.getName() == null || tmp.getName().equals(""))
 					continue;
 				for(Node child : node.getChildren()) {
 					if(tmp.getName().equals(child.getId()+"")) {
