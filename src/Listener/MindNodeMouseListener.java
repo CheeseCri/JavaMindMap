@@ -2,7 +2,6 @@ package Listener;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -47,7 +46,6 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		}
 		MindNode source = (MindNode) e.getSource();
 		Node node = source.getNode();
-		// System.out.println(source.getText());
 		setSettingField(node.getName(), node.getX(), node.getY(), node.getW(), node.getH(), node.getColor());
 
 		selectedMindNode = source;
@@ -58,10 +56,8 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 
 		Color reverseColor = new Color(255 - red, 255 - green, 255 - blue);
 
-		// Color reverseColor = Color.MAGENTA;
 		selectedMindNode.setBackground(reverseColor);
 		selectedMindNode.setForeground(new Color(0xFFFFFF));
-		// TODO Auto-generated method stub
 	}
 
 	private void setSettingField(String name, int x, int y, int w, int h, String color) {
@@ -88,8 +84,6 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("PRESS ? Point = " + e.getPoint());
-
 		if (isResize == true) {
 			this.startX = e.getXOnScreen();
 			this.startY = e.getYOnScreen();
@@ -114,7 +108,6 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 		thisMindNode.setCursor(Cursor.getDefaultCursor());
 		thisMindNode.getParent().setVisible(false);
 		thisMindNode.getParent().setVisible(true);
-		System.out.println("REX = " + endX + " REY = " + endY);
 	}
 
 	@Override
@@ -145,39 +138,17 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 			endY = e.getYOnScreen();
 
 			if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR))) {
-				// mindnode x 위치는 - 그대로 변경, 사이즈는 +로
-				// only X
-
 				x = thisMindNode.getX() + endX - startX;
 				w = thisMindNode.getWidth() - endX + startX;
-				// System.out.println("getX = " + endX + " getY = " + endY);
-				// System.out.println("getX = " + e.getPoint().getX() + " getY =
-				// " + e.getPoint().getY());
-				// System.out.println("x = " + x + " w = " + w);
-				// System.out.println("Node BOund = " + node.getX() + " " +
-				// node.getY() + " " + node.getW() + " " + node.getH());
-
-				// thisMindNode.getParent().repaint();
-
+			
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR))) {
-
 				w = thisMindNode.getWidth() + endX - startX;
 
-				// x 위치는
-				// only X
-
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR))) {
-				// only Y
-
 				y = thisMindNode.getY() + endY - startY;
 				h = thisMindNode.getHeight() - endY + startY;
-				// System.out.println("getX = " + e.getX() + " getY = " +
-				// e.getY());
-				// resizeNode(thisMindNode,x,y,w,h);
-				// thisMindNode.getParent().repaint();
 
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR))) {
-				// only Y
 				h = thisMindNode.getHeight() + endY - startY;
 
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR))) {
@@ -185,10 +156,8 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 				h = thisMindNode.getHeight() - endY + startY;
 				x = thisMindNode.getX() + endX - startX;
 				w = thisMindNode.getWidth() - endX + startX;
-				// XY
 
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR))) {
-				// XY
 				y = thisMindNode.getY() + endY - startY;
 				h = thisMindNode.getHeight() - endY + startY;
 				w = thisMindNode.getWidth() + endX - startX;
@@ -197,18 +166,12 @@ public class MindNodeMouseListener implements MouseListener, MouseMotionListener
 				x = thisMindNode.getX() + endX - startX;
 				w = thisMindNode.getWidth() - endX + startX;
 				h = thisMindNode.getHeight() + endY - startY;
-				// XY
 
 			} else if (thisMindNode.getCursor().equals(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR))) {
-
-				// XY
 				h = thisMindNode.getHeight() + endY - startY;
 				w = thisMindNode.getWidth() + endX - startX;
 
 			}
-			System.out.println(e.getXOnScreen());
-			System.out.println(startX + " " + startY + " ");
-			System.out.println(endX + " " + endY + " ");
 
 			startX = endX;
 			startY = endY;

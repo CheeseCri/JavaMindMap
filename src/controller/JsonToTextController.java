@@ -1,7 +1,5 @@
 package controller;
 
-import javax.swing.JTextArea;
-
 import NodeTree.Node;
 
 public class JsonToTextController {

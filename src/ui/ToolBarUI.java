@@ -2,22 +2,18 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Listener.AttributeButtenListener;
-import Listener.TextAreaButtonListener;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-
+import Listener.AttributeButtenListener;
+import Listener.TextAreaButtonListener;
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
-import controller.JsonToTextController;
 
 public class ToolBarUI {
 	private JToolBar toolBar;
@@ -87,7 +83,6 @@ public class ToolBarUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				// System.out.println(jsonController.setJson(MainUI.getTreeClass().getParent()));
 				fileController.makeUISaveFile();
 			}
 		});

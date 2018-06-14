@@ -2,8 +2,6 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Listener.AttributeButtenListener;
-import Listener.TextAreaButtonListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -12,10 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Listener.AttributeButtenListener;
+import Listener.TextAreaButtonListener;
 import controller.FileController;
 import controller.FileWrite;
 import controller.JsonController;
-import controller.JsonToTextController;
 
 public class MenuUI {
 	private JMenuBar menuBar;
@@ -91,7 +90,6 @@ public class MenuUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				// System.out.println(jsonController.setJson(MainUI.getTreeClass().getParent()));
 				fileController.makeUISaveFile();
 			}
 		});
@@ -147,7 +145,7 @@ public class MenuUI {
 
 	public void setTextEditorPane(JTextArea textEditorPane) {
 		this.textEditorPane = textEditorPane;
-	}
+	}	
 
 	public JPanel getMindMapPane() {
 		return mindMapPane;

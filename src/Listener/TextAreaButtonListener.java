@@ -42,7 +42,6 @@ public class TextAreaButtonListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// System.out.println(textArea.getText());
 		mindMapPane.removeAll();
 		mindMapPane.repaint();
 		NodeMaker maker = new NodeMaker(textArea.getText());

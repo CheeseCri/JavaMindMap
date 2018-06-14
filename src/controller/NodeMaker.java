@@ -34,7 +34,6 @@ public class NodeMaker {
 
 		while (stk.hasMoreTokens()) {
 			line = stk.nextToken();
-			// System.out.println(idList.size());
 			int parentId = idList.get(getTapCount(line) - 1);
 			Node parentNode = treeClass.searchNodeById(parentId);
 			if (parentNode == null)

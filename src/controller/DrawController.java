@@ -1,11 +1,5 @@
 package controller;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -48,11 +42,7 @@ public class DrawController {
 
 		Node rootNode = MainUI.getTreeClass().getRoot();
 		MindNode mindRootNode = new MindNode(rootNode);
-		// this.mindMapPane.add(mindRootNode);
 		this.drawChildrenNode(mindRootNode);
-		// mindMapPane.setLayout(new BorderLayout());
-		// drawArrow.setBounds(200, 200,400,600);
-		// System.out.println(this.mindMapPane.add(drawArrow));
 
 		this.mindMapPane.setVisible(false);
 		this.mindMapPane.setVisible(true);

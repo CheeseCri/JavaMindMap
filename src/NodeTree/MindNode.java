@@ -28,7 +28,6 @@ public class MindNode extends JLabel {
 		super.setBackground(new Color(Integer.parseInt(node.getColor(), 16)));
 		super.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		super.setHorizontalAlignment(CENTER);
-		System.out.println(super.getBounds());
 		this.parentNode = node.getParent();
 		if (parentNode != null) {
 			this.getShort();
@@ -41,11 +40,9 @@ public class MindNode extends JLabel {
 			// if (super.getParent().getComponents() != null ||
 			// super.getParent().getComponents().length != 0) {
 			for (Component tmp : super.getParent().getComponents()) {
-				System.out.println(tmp.getName());
 				if (tmp.getName() == null || tmp.getName().equals(""))
 					continue;
 				for (Node child : node.getChildren()) {
-					System.out.println("iddddd : " + tmp.getName() + "," + child.getId());
 					if (tmp.getName().equals(child.getId() + "")) {
 						MindNode h = (MindNode) tmp;
 						h.Draw();
@@ -60,11 +57,9 @@ public class MindNode extends JLabel {
 		}
 		else
 			for (Component tmp : super.getParent().getComponents()) {
-				System.out.println(tmp.getName());
 				if (tmp.getName() == null || tmp.getName().equals(""))
 					continue;
 				for (Node child : node.getChildren()) {
-					System.out.println("iddddd : " + tmp.getName() + "," + child.getId());
 					if (tmp.getName().equals(child.getId() + "")) {
 						MindNode h = (MindNode) tmp;
 						h.Draw();
@@ -263,7 +258,6 @@ public class MindNode extends JLabel {
 			this.pY = pRightY;
 			min = getDistance(cRightX, cRightY, pRightX, pRightY);
 		}
-		System.out.println(this.cX + "," + this.cY);
 
 	}
 

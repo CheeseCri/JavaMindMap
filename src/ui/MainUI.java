@@ -83,8 +83,6 @@ public class MainUI extends JFrame {
 		settingItemHEdit = new JTextField();
 		settingItemColorEdit = new JTextField();
 
-		// JMenu menu = new JMenu("HI");
-		// mainMenuBar.add(menu);
 
 		/* JFrame(MainFrame) init size, Location */
 		Dimension frameDimension = new Dimension(1400, 700);
@@ -94,16 +92,6 @@ public class MainUI extends JFrame {
 		/* Make ScorllPane, Split Pane */
 		JScrollPane mindMapScrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 	      mindMapScrollPane.getViewport().setView(mindMapPane);
-//	      mindMapScrollPane.setAutoscrolls(true);
-//	      
-//	      mindMapPane.addMouseMotionListener(new MouseMotionAdapter() {
-//	    	  public void mouseDragged(MouseEvent e) {
-//	    		  System.out.println("MOUSE");
-//	    	        Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
-//	    	        ((JPanel)e.getSource()).scrollRectToVisible(r);
-//	    	    }
-//	      });
-	      
 		JScrollPane settingScrollPane = new JScrollPane(settingPane);
 		JScrollPane textEditorScrollPane = new JScrollPane(textEditorPane);
 
@@ -114,7 +102,6 @@ public class MainUI extends JFrame {
 		settingPanel.add(settingScrollPane, BorderLayout.CENTER);
 		textAreaPanel.add(textAreaButton, BorderLayout.SOUTH);
 		settingPanel.add(settingAreaButton, BorderLayout.SOUTH);
-		// textAreaPanel.add(new JButton("HIHIHI"), BorderLayout.SOUTH);
 
 		/* Add Component in SplitPane */
 		textAndSplitPane.setLeftComponent(textAreaPanel);

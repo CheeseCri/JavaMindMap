@@ -46,13 +46,11 @@ public class FileController {
 		this.file = fileOpenUI.getSelectedFile();
 
 		if (openRes == FileOpenUI.APPROVE_OPTION) {
-			System.out.println("불러오기 경로 :" + file.getAbsolutePath());
 			// 읽어온 파일 READ
 			this.filePath = file.getAbsolutePath();
 			json = fileRead.readJson(file.getAbsolutePath());
 			// MainUI의 트리 새로 생성
 			MainUI.setTreeClass(new TreeClass(jsonController.getJson(json)));
-			// System.out.println(jsonController.getJson(json));
 			jsonToText = new JsonToTextController();
 			textEditorPane.setText(jsonToText.JsonToTextArea(MainUI.getTreeClass().getRoot(), 0));
 			TreeManagement treeManagement = new TreeManagement();
@@ -76,7 +74,6 @@ public class FileController {
 	private void fileSave(int saveRes) {
 		this.file = fileSaveUI.getSelectedFile();
 		if (saveRes == FileSaveUI.APPROVE_OPTION) {
-			System.out.println("저장 경로 : " + fileSaveUI.getSelectedFile().toString());
 			this.filePath = fileSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
 			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));
@@ -91,7 +88,6 @@ public class FileController {
 	private void fileNewSave(int newSaveRes) {
 		this.file = fileNewSaveUI.getSelectedFile();
 		if (newSaveRes == FileSaveUI.APPROVE_OPTION) {
-			System.out.println("새 저장 경로 : " + fileNewSaveUI.getSelectedFile().toString());
 			this.filePath = fileNewSaveUI.getSelectedFile().toString();
 			// fileWrite기능 수행
 			fileWrite.writeJson(filePath, jsonController.setJson(MainUI.getTreeClass().getRoot()));

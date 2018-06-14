@@ -1,9 +1,10 @@
 package controller;
 
-import static java.awt.geom.AffineTransform.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import javax.swing.*;
+
+import javax.swing.JComponent;
 
 public class DrawArrow extends JComponent {
 	
